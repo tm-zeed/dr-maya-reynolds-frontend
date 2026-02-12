@@ -1,4 +1,3 @@
-// components/home/HomeSpecialtiesGrid.jsx
 import Link from 'next/link';
 import { services } from '@/data/services';
 
@@ -15,23 +14,24 @@ export default function HomeSpecialtiesGrid() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((item) => (
-            <div key={item.slug} className="bg-white p-12 text-center shadow-sm hover:shadow-md transition-all group border border-transparent hover:border-oak-accent/20">
+            <div key={item.slug} className="bg-white p-12 text-center shadow-sm hover:shadow-md transition-all group border border-transparent hover:border-oak-accent/20 flex flex-col items-center">
               
-              {/* FIX: Instead of an Arch, we use a subtle, elegant circle with an initial */}
-              <div className="w-20 h-20 rounded-full border border-oak-accent/30 mx-auto mb-8 flex items-center justify-center group-hover:bg-oak-accent group-hover:text-white transition-all duration-500">
-                <span className="text-2xl font-serif text-oak-accent group-hover:text-white">
+              {/* Elegant Initial Circle */}
+              <div className="w-20 h-20 rounded-full border border-oak-accent/30 mb-8 flex items-center justify-center group-hover:bg-oak-accent group-hover:text-white transition-all duration-500">
+                <span className="text-2xl font-serif text-oak-accent group-hover:text-white pointer-events-none">
                   {item.title.charAt(0)}
                 </span>
               </div>
 
               <h3 className="text-2xl font-serif text-moss-green mb-4">{item.title}</h3>
-              <p className="text-charcoal/80 text-sm leading-relaxed mb-8">
+              <p className="text-charcoal/80 text-sm leading-relaxed mb-8 min-h-[60px]">
                 {item.shortDesc}
               </p>
 
+              {/* FIX: Increased clickable area and z-index */}
               <Link 
                 href={`/services/${item.slug}`} 
-                className="cursor-pointer text-xs uppercase tracking-widest font-bold text-oak-accent border-b border-oak-accent pb-1 hover:text-moss-green hover:border-moss-green transition-all"
+                className="relative z-10 cursor-pointer inline-block text-xs uppercase tracking-widest font-bold text-oak-accent border-b border-oak-accent pb-1 hover:text-moss-green hover:border-moss-green transition-all"
               >
                 Learn More
               </Link>
